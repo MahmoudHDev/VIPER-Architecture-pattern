@@ -16,6 +16,7 @@
 		1EDADA8229337E1300F5EF85 /* UsersRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EDADA8129337E1300F5EF85 /* UsersRouter.swift */; };
 		1EDADA8529337E3200F5EF85 /* Users.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EDADA8429337E3200F5EF85 /* Users.swift */; };
 		1EDADA8829337E5A00F5EF85 /* UsersInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EDADA8729337E5A00F5EF85 /* UsersInteractor.swift */; };
+		1EDADA8B2933841600F5EF85 /* UsersWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EDADA8A2933841600F5EF85 /* UsersWorker.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		1EDADA8129337E1300F5EF85 /* UsersRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersRouter.swift; sourceTree = "<group>"; };
 		1EDADA8429337E3200F5EF85 /* Users.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Users.swift; sourceTree = "<group>"; };
 		1EDADA8729337E5A00F5EF85 /* UsersInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersInteractor.swift; sourceTree = "<group>"; };
+		1EDADA8A2933841600F5EF85 /* UsersWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersWorker.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,6 +114,7 @@
 				1EDADA8129337E1300F5EF85 /* UsersRouter.swift */,
 				1EDADA8429337E3200F5EF85 /* Users.swift */,
 				1EDADA8729337E5A00F5EF85 /* UsersInteractor.swift */,
+				1EDADA8A2933841600F5EF85 /* UsersWorker.swift */,
 			);
 			path = UsersView;
 			sourceTree = "<group>";
@@ -185,6 +188,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1EDADA8B2933841600F5EF85 /* UsersWorker.swift in Sources */,
 				1EDADA8829337E5A00F5EF85 /* UsersInteractor.swift in Sources */,
 				1E18DB7329337A68009FCB74 /* UsersViewController.swift in Sources */,
 				1EDADA7F29337D5D00F5EF85 /* UsersPresenter.swift in Sources */,

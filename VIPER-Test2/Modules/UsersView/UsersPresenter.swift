@@ -11,6 +11,14 @@ protocol UsersPresenterPr {
     var view        : UsersViewPr? { get set}
     var router      : UsersRouter? {get set}
     var interactor  : UsersInteractorPr? {get set}
+    
+}
+
+protocol UserInteractorOuput {
+    
+    func usersFetchedSuccessfully(with users: [Users])
+    
+    func usersFailedToFetch(with error: Error)
 }
 
 class UsersPresenter: UsersPresenterPr {
@@ -24,5 +32,20 @@ class UsersPresenter: UsersPresenterPr {
     
     //MARK:- Methods
 
+    
+}
+
+extension UsersPresenter: UserInteractorOuput {
+    
+    // Interactor Output
+    
+    func usersFetchedSuccessfully(with users: [Users]) {
+        print("users fetched")
+    }
+    
+    func usersFailedToFetch(with error: Error) {
+        print("failed")
+    }
+    
     
 }
