@@ -31,10 +31,6 @@ class UsersViewController: UIViewController, UsersViewPr{
         return table
     }()
     
-    var numberOfRows: Int {
-        return 0
-    }
-    
     //MARK:- View Life cycle
 
     override func viewDidLoad() {
@@ -78,7 +74,9 @@ extension UsersViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! UsersCellTableViewCell
-        cell.textLabel?.text = "cell \(indexPath.row)"
+        let data = presenter?.arrUsers?[indexPath.row]
+        
+        cell.setupCell(title: data?.name ?? "No name", subTitle:data?.username ?? "No Username")
         return cell
     }
     
