@@ -8,12 +8,15 @@
 import Foundation
 
 protocol UsersPresenterPr {
+    // VIPER Components
     var view        : UsersViewPr? { get set}
     var router      : UsersRouter? {get set}
     var interactor  : UsersInteractorPr? {get set}
-
-    var numberOfRows: Int? {get set}
+    // Properties
     var arrUsers: [Users]? {get set}
+    
+    //Methods
+    
 }
 
 protocol UserInteractorOuput {
@@ -28,6 +31,8 @@ protocol UserInteractorOuput {
 }
 
 class UsersPresenter: UsersPresenterPr {
+
+    
     
     //MARK:- Properties
     
@@ -40,9 +45,8 @@ class UsersPresenter: UsersPresenterPr {
     //MARK:- Methods
 
     var arrUsers: [Users]?
-    
-    var numberOfRows: Int?
  
+
 }
 
 extension UsersPresenter: UserInteractorOuput {

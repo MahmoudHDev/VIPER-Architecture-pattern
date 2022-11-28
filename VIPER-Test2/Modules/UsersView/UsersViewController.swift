@@ -11,13 +11,15 @@ protocol UsersViewPr {
     
     var presenter: UsersPresenterPr? {get set}
     
+    
     func reloadTableView()
+    
+    
     
 }
 
 
 class UsersViewController: UIViewController, UsersViewPr{
-
     
     
     //MARK:- Properties
@@ -25,9 +27,13 @@ class UsersViewController: UIViewController, UsersViewPr{
     
     let tableView: UITableView = {
         let table = UITableView()
-        table.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        table.register(UsersCellTableViewCell.myNib(), forCellReuseIdentifier: "cell")
         return table
     }()
+    
+    var numberOfRows: Int {
+        return 0
+    }
     
     //MARK:- View Life cycle
 
@@ -60,18 +66,18 @@ extension UsersViewController: UITableViewDataSource, UITableViewDelegate {
     //MARK:- Methods
     
     func setupCell() {
-        self.tableView.dataSource = self
-        self.tableView.delegate = self
+        self.tableView.dataSource   = self
+        self.tableView.delegate     = self
     }
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // Return the count of the array from the presenter
-        return presenter?.arrUsers?.count ?? 1
+        return presenter?.arrUsers?.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! UsersCellTableViewCell
         cell.textLabel?.text = "cell \(indexPath.row)"
         return cell
     }
@@ -82,7 +88,7 @@ extension UsersViewController: UITableViewDataSource, UITableViewDelegate {
             self.tableView.reloadData()
 
         }
-        print("from view\(presenter?.arrUsers?.count)")
+//        print("from view\(presenter?.arrUsers?.count)")
     }
     
 }
