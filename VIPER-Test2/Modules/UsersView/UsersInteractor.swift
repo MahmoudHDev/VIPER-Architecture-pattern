@@ -9,7 +9,7 @@ import Foundation
 
 protocol UsersInteractorPr {
     // Properties
-    var presenter: UsersPresenterPr? {get set}
+    var presenter: UserInteractorOuput? {get set}
     
     // Methods
     func getUsers()
@@ -18,7 +18,7 @@ protocol UsersInteractorPr {
 class UsersInteractor: UsersInteractorPr {
     
     //MARK:- Properties
-    var presenter   : UsersPresenterPr?
+    var presenter   : UserInteractorOuput?
     var userWorker  : UsersWorker = UsersWorker()
     
     //MARK:- Init
@@ -34,8 +34,9 @@ class UsersInteractor: UsersInteractorPr {
             case .success(let arrUsers):
                 print("count of users \(arrUsers.count)")
                 // Send the users to the view
-                
+                self.presenter?.usersFetchedSuccessfully(with: arrUsers)
             case .failure(let err):
+                self.presenter?.usersFailedToFetch(with: err)
                 print("error \(err.localizedDescription)")
             }
         }

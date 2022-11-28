@@ -26,12 +26,12 @@ class UsersRouter: UsersRouterPr {
     static func createModule() -> UsersRouterPr {
         let router = UsersRouter()
         
-        var view: UsersViewPr               = UsersViewController()
-        var interactor: UsersInteractorPr   = UsersInteractor()
-        var presenter: UsersPresenterPr     = UsersPresenter()
+        var view: UsersViewPr   = UsersViewController()
+        let interactor          = UsersInteractor()
+        let presenter           = UsersPresenter()
         
-        view.presenter       = presenter
-        interactor.presenter = presenter
+        view.presenter          = presenter
+        interactor.presenter    = presenter
         
         presenter.view          = view
         presenter.interactor    = interactor
