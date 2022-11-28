@@ -11,17 +11,24 @@ protocol UsersPresenterPr {
     var view        : UsersViewPr? { get set}
     var router      : UsersRouter? {get set}
     var interactor  : UsersInteractorPr? {get set}
-    
+
+    var numberOfRows: Int? {get set}
+    var arrUsers: [Users]? {get set}
 }
 
 protocol UserInteractorOuput {
+    // Properties
     
+    
+    // Methods
     func usersFetchedSuccessfully(with users: [Users])
     
     func usersFailedToFetch(with error: Error)
+    
 }
 
 class UsersPresenter: UsersPresenterPr {
+    
     //MARK:- Properties
     
     var view: UsersViewPr?
@@ -32,18 +39,26 @@ class UsersPresenter: UsersPresenterPr {
     
     //MARK:- Methods
 
+    var arrUsers: [Users]?
     
+    var numberOfRows: Int?
+ 
 }
 
 extension UsersPresenter: UserInteractorOuput {
     
+    
     // Interactor Output
     
     func usersFetchedSuccessfully(with users: [Users]) {
-        print("users fetched")
+        arrUsers = users
+        let count = (users.count)
+        view?.reloadTableView()
+        print("UserFetched \(count) Users , \(arrUsers!.count).")
     }
     
     func usersFailedToFetch(with error: Error) {
+        
         print("failed")
     }
     

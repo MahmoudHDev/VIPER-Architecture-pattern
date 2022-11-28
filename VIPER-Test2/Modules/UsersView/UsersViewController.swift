@@ -11,10 +11,14 @@ protocol UsersViewPr {
     
     var presenter: UsersPresenterPr? {get set}
     
+    func reloadTableView()
+    
 }
 
 
 class UsersViewController: UIViewController, UsersViewPr{
+
+    
     
     //MARK:- Properties
     var presenter: UsersPresenterPr?
@@ -45,10 +49,15 @@ class UsersViewController: UIViewController, UsersViewPr{
         navigationController?.navigationBar.prefersLargeTitles = true
     }
 
+    
+    
+    
 }
 
 //MARK:- Extension TableViewDataSource & TableViewDelegate
 extension UsersViewController: UITableViewDataSource, UITableViewDelegate {
+    
+    //MARK:- Methods
     
     func setupCell() {
         self.tableView.dataSource = self
@@ -57,7 +66,8 @@ extension UsersViewController: UITableViewDataSource, UITableViewDelegate {
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        // Return the count of the array from the presenter
+        return presenter?.arrUsers?.count ?? 1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -66,5 +76,13 @@ extension UsersViewController: UITableViewDataSource, UITableViewDelegate {
         return cell
     }
     
+    
+    func reloadTableView() {
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+
+        }
+        print("from view\(presenter?.arrUsers?.count)")
+    }
     
 }
