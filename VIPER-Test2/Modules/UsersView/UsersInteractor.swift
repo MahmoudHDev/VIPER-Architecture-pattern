@@ -7,7 +7,7 @@
 
 import Foundation
 
-protocol UsersInteractorPr {
+protocol UsersInteractorPr: class {
     // Properties
     var presenter: UserInteractorOuput? {get set}
     

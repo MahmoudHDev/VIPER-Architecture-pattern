@@ -7,7 +7,7 @@
 
 import UIKit
 
-protocol UsersViewPr {
+protocol UsersViewPr: class {
     
     var presenter: UsersPresenterPr? {get set}
     
@@ -23,7 +23,7 @@ class UsersViewController: UIViewController, UsersViewPr{
     
     
     //MARK:- Properties
-    var presenter: UsersPresenterPr?
+    weak var presenter: UsersPresenterPr?
     
     let tableView: UITableView = {
         let table = UITableView()
@@ -50,7 +50,6 @@ class UsersViewController: UIViewController, UsersViewPr{
         title = "Contacts"
         navigationController?.navigationBar.prefersLargeTitles = true
     }
-
     
     
     

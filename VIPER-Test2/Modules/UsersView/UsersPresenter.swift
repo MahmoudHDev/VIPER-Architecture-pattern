@@ -7,7 +7,7 @@
 
 import Foundation
 
-protocol UsersPresenterPr {
+protocol UsersPresenterPr: class {
     // VIPER Components
     var view        : UsersViewPr? { get set}
     var router      : UsersRouter? {get set}
@@ -36,7 +36,7 @@ class UsersPresenter: UsersPresenterPr {
     
     //MARK:- Properties
     
-    var view: UsersViewPr?
+    weak var view: UsersViewPr?
     
     var router: UsersRouter?
     
