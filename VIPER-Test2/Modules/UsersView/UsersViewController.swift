@@ -6,22 +6,18 @@
 //
 
 import UIKit
+import MBProgressHUD
 
 protocol UsersViewPr: class {
-    
+    // Properties
     var presenter: UsersPresenterPr? {get set}
-    
-    
+    // Methods
     func reloadTableView()
     
-    
-    
 }
-
+// Object
 
 class UsersViewController: UIViewController, UsersViewPr{
-    
-    
     //MARK:- Properties
     weak var presenter: UsersPresenterPr?
     
@@ -30,14 +26,19 @@ class UsersViewController: UIViewController, UsersViewPr{
         table.register(UsersCellTableViewCell.myNib(), forCellReuseIdentifier: "cell")
         return table
     }()
+    var hud: MBProgressHUD = MBProgressHUD()
     
     //MARK:- View Life cycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        hud = MBProgressHUD.showAdded(to: self.view, animated: true)
+        hud.mode = .indeterminate
+        hud.label.text = "Loading"
         self.setupCell()
         self.viewStyle()
         view.addSubview(tableView)
+        view.addSubview(hud)
     }
     
     override func viewDidLayoutSubviews() {
@@ -50,8 +51,6 @@ class UsersViewController: UIViewController, UsersViewPr{
         title = "Contacts"
         navigationController?.navigationBar.prefersLargeTitles = true
     }
-    
-    
     
 }
 
@@ -79,13 +78,21 @@ extension UsersViewController: UITableViewDataSource, UITableViewDelegate {
         return cell
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print("item has been selected")
+        print(presenter!.arrUsers![indexPath.row].name!)
+    }
+    
     
     func reloadTableView() {
+        
         DispatchQueue.main.async {
+            self.hud.hide(animated: true)
             self.tableView.reloadData()
 
         }
-//        print("from view\(presenter?.arrUsers?.count)")
     }
+    
+    
     
 }

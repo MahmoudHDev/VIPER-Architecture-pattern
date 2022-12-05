@@ -8,7 +8,6 @@
 import UIKit
 
 class UsersCellTableViewCell: UITableViewCell {
-
     
     //MARK:- Outlets
     @IBOutlet weak var title: UILabel!

@@ -31,26 +31,23 @@ protocol UserInteractorOuput {
 }
 
 class UsersPresenter: UsersPresenterPr {
-
-    
     
     //MARK:- Properties
     
-    weak var view: UsersViewPr?
+    weak var view   : UsersViewPr?
     
-    var router: UsersRouter?
+    var router      : UsersRouter?
     
-    var interactor: UsersInteractorPr?
+    var interactor  : UsersInteractorPr?
     
     //MARK:- Methods
 
-    var arrUsers: [Users]?
- 
+    var arrUsers    : [Users]?
 
 }
+//MARK:- UserInteractorOutput
 
 extension UsersPresenter: UserInteractorOuput {
-    
     
     // Interactor Output
     
